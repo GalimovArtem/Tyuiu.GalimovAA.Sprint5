@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using Tyuiu.GalimovAA.Sprint5.Task0.V27.Lib;
 
 namespace Tyuiu.GalimovAA.Sprint5.Task0.V27
@@ -37,11 +36,11 @@ namespace Tyuiu.GalimovAA.Sprint5.Task0.V27
             string path = ds.SaveToFileTextData(x);
 
             double y = Math.Pow(x - 1, 3 * x + 1);
-            string roundedY = y.ToString("F3", CultureInfo.InvariantCulture);
+            string result = ((int)y).ToString();
 
             Console.WriteLine("Файл: " + path);
             Console.WriteLine("Успешно создан!");
-            Console.WriteLine($"Результат: y = {roundedY}");
+            Console.WriteLine($"Результат: y = {result}");
 
             Console.ReadKey();
         }
