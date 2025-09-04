@@ -8,41 +8,41 @@ namespace Tyuiu.GalimovAA.Sprint5.Task5.V21.Lib
     {
         public double LoadFromDataFile(string path)
         {
-            double maxEvenInteger = 0;
-            bool foundEvenInteger = false;
+            string[] lines = File.ReadAllLines(path);
+            int maxEvenInt = -1;
 
-            using (StreamReader reader = new StreamReader(path))
+            foreach (string line in lines)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                string[] values = line.Split(' ');
+
+                foreach (string value in values)
                 {
-                    if (double.TryParse(line.Trim(), out double number))
+                    if (double.TryParse(value, out double number))
                     {
-                        if (number == Math.Floor(number) && number % 2 == 0 && number > 0)
+                        if (number == Math.Floor(number) && (int)number % 2 == 0)
                         {
-                            int integerValue = (int)number;
-                            if (integerValue > maxEvenInteger)
+                            int intValue = (int)number;
+                            if (intValue > maxEvenInt)
                             {
-                                maxEvenInteger = integerValue;
-                                foundEvenInteger = true;
+                                maxEvenInt = intValue;
                             }
                         }
                     }
                 }
             }
 
-            if (!foundEvenInteger)
+            if (maxEvenInt == -1)
             {
-                return 1;
+                return 0;
             }
 
             long factorial = 1;
-            for (int i = 1; i <= (int)maxEvenInteger; i++)
+            for (int i = 1; i <= maxEvenInt; i++)
             {
                 factorial *= i;
             }
 
-            return factorial;
+            return Math.Round((double)factorial, 3);
         }
     }
 }
