@@ -10,9 +10,13 @@ namespace Tyuiu.GalimovAA.Sprint5.Task7.V19.Lib
         public string LoadDataAndSave(string path)
         {
             string tempFile = Path.GetTempFileName();
+
             string data = File.ReadAllText(path, Encoding.Default);
-            string result = data.Replace("cc", "");
+
+            string result = data.Replace("сс", "");
+
             File.WriteAllText(tempFile, result, Encoding.Default);
+
             return tempFile;
         }
     }
