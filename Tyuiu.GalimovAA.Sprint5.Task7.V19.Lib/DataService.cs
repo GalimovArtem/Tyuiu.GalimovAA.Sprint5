@@ -10,14 +10,19 @@ namespace Tyuiu.GalimovAA.Sprint5.Task7.V19.Lib
         public string LoadDataAndSave(string path)
         {
             string tempFile = Path.GetTempFileName();
-
             string data = File.ReadAllText(path, Encoding.Default);
-
-            string result = data.Replace("сс", "");
-
+            string result = RemoveAllOccurrences(data, "сс");
             File.WriteAllText(tempFile, result, Encoding.Default);
-
             return tempFile;
+        }
+        private string RemoveAllOccurrences(string input, string pattern)
+        {
+            int index;
+            while ((index = input.IndexOf(pattern, StringComparison.OrdinalIgnoreCase)) >= 0)
+            {
+                input = input.Remove(index, pattern.Length);
+            }
+            return input;
         }
     }
 }
