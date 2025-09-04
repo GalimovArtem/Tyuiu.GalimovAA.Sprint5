@@ -35,31 +35,23 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
                 {
                     resultBuilder.Append("0");
                 }
-
                 if (x < stopValue)
                 {
                     resultBuilder.Append("\n");
                 }
             }
-
             File.WriteAllText(path, resultBuilder.ToString());
             return path;
         }
-
         private string FormatResult(double value)
         {
-         
             double roundedValue = Math.Round(value, 2);
-
-           
             if (roundedValue % 1 == 0)
             {
                 return ((int)roundedValue).ToString();
             }
-
-         
             string result = roundedValue.ToString("0.##");
-            return result.Replace(",", ".");
+            return result;
         }
     }
 }
