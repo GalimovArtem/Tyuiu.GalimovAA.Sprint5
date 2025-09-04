@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib;
 
 namespace Tyuiu.GalimovAA.Sprint5.Task1.V2
@@ -40,24 +41,27 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2
 
             string path = ds.SaveToFileTextData(startValue, stopValue);
 
+            // Читаем файл и выводим значения в таблицу
+            string[] lines = File.ReadAllLines(path);
+
             Console.WriteLine("+----------+----------+");
             Console.WriteLine("|    x     |   f(x)   |");
             Console.WriteLine("+----------+----------+");
 
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
+            for (int i = 0; i < lines.Length; i++)
             {
-                reader.ReadLine();
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] values = line.Split('\t');
-                    Console.WriteLine($"| {values[0],8} | {values[1],8} |");
-                }
+                int x = startValue + i;
+                Console.WriteLine($"| {x,8} | {lines[i].Replace(".", ","),8} |");
             }
 
             Console.WriteLine("+----------+----------+");
             Console.WriteLine();
             Console.WriteLine($"Файл сохранен: {path}");
+
+            // Выводим содержимое файла как есть (для проверки)
+            Console.WriteLine("\nСодержимое файла:");
+            Console.WriteLine(File.ReadAllText(path).Replace(".", ","));
+
             Console.ReadKey();
         }
     }
