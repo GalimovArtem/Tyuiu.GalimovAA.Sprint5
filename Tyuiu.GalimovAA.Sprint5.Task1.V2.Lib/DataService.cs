@@ -15,7 +15,8 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double result = CalculateFunction(x);
-                    writer.WriteLine($"{result:F2}");
+                    string formattedResult = FormatResult(result);
+                    writer.WriteLine(formattedResult);
                 }
             }
 
@@ -41,6 +42,21 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
             {
                 return 0;
             }
+        }
+
+        private string FormatResult(double result)
+        {
+            string formatted = result.ToString("F2");
+            if (formatted.EndsWith(",00"))
+            {
+                formatted = formatted.Substring(0, formatted.Length - 3);
+            }
+            else if (formatted.EndsWith(",0"))
+            {
+                formatted = formatted.Substring(0, formatted.Length - 2);
+            }
+
+            return formatted;
         }
     }
 }
