@@ -15,7 +15,7 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double result = CalculateFunction(x);
-                    writer.WriteLine($"{result:F2}".Replace(",", "."));
+                    writer.WriteLine($"{result:F2}");
                 }
             }
 
