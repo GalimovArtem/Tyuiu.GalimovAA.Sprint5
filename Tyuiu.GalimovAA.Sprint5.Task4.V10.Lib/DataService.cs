@@ -11,7 +11,7 @@ namespace Tyuiu.GalimovAA.Sprint5.Task4.V10.Lib
         {
             string strX = File.ReadAllText(path);
             double x = double.Parse(strX, CultureInfo.InvariantCulture);
-            double y = Math.Pow(x, 3) + 1.2 * Math.Pow(x, 2) + 2;
+            double y = Math.Pow(x, 3) + (1.2 * x) + 2;
             return Math.Round(y, 3);
         }
     }
