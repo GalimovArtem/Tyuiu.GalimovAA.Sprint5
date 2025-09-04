@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib;
 
 namespace Tyuiu.GalimovAA.Sprint5.Task1.V2
@@ -12,7 +13,7 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2
             Console.Title = "Спринт #5 | Выполнил: Галимов А. А. | ПКТб-24-1";
             Console.WriteLine("***************************************************************************");
             Console.WriteLine("* Спринт #5                                                               *");
-            Console.WriteLine("* Тема: Обработка файлов                                                  *");
+            Console.WriteLine("* Тема: Класс File. Запись набора данных в текстовый файл                 *");
             Console.WriteLine("* Задание #1                                                              *");
             Console.WriteLine("* Вариант #2                                                              *");
             Console.WriteLine("* Выполнил: Галимов Артём Азатович | ПКТб-24-1                            *");

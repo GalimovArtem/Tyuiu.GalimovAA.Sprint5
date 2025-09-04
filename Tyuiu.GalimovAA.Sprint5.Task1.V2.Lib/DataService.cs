@@ -12,18 +12,11 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
 
             using (StreamWriter writer = new StreamWriter(path))
             {
-                writer.WriteLine("Артём Азатович Галимов, ПКТб-24-1");
-                writer.WriteLine("╔════════╦════════════╗");
-                writer.WriteLine("║   X    ║    f(x)    ║");
-                writer.WriteLine("╠════════╬════════════╣");
-
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double result = CalculateFunction(x);
-                    writer.WriteLine($"║ {x,6} ║ {result,10:F2} ║");
+                    writer.WriteLine($"{result:F2}".Replace(",", "."));
                 }
-
-                writer.WriteLine("╚════════╩════════════╝");
             }
 
             return path;
