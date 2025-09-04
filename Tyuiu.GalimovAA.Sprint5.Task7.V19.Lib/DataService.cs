@@ -11,7 +11,7 @@ namespace Tyuiu.GalimovAA.Sprint5.Task7.V19.Lib
         {
             string tempFile = Path.GetTempFileName();
             string data = File.ReadAllText(path, Encoding.Default);
-            string result = data.Replace("cc", "c");
+            string result = data.Replace("cc", "");
             File.WriteAllText(tempFile, result, Encoding.Default);
             return tempFile;
         }
