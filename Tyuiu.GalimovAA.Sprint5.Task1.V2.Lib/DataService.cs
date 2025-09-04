@@ -12,35 +12,40 @@ namespace Tyuiu.GalimovAA.Sprint5.Task1.V2.Lib
 
             using (StreamWriter writer = new StreamWriter(path))
             {
+                writer.WriteLine("x\tf(x)");
+
                 for (int x = startValue; x <= stopValue; x++)
                 {
-                    double result = CalculateFunction(x);
-                    writer.WriteLine($"{result:0.##}");
+                    try
+                    {
+                        double denominator = Math.Cos(x) - 2 * x;
+
+                        if (Math.Abs(denominator) < 0.0001)
+                        {
+                            writer.WriteLine($"{x}\t0");
+                        }
+                        else
+                        {
+                            double numerator = 2 * x - 3;
+                            double result = numerator / denominator + 5 * x - 6;
+                            string formattedResult = FormatResult(result);
+                            writer.WriteLine($"{x}\t{formattedResult}");
+                        }
+                    }
+                    catch
+                    {
+                        writer.WriteLine($"{x}\t0");
+                    }
                 }
             }
 
             return path;
         }
 
-        private double CalculateFunction(int x)
+        private string FormatResult(double value)
         {
-            try
-            {
-                double denominator = Math.Cos(x) - 2 * x;
-
-                if (Math.Abs(denominator) < double.Epsilon)
-                {
-                    return 0;
-                }
-
-                double numerator = 2 * x - 3;
-                double fraction = numerator / denominator;
-                return fraction + 5 * x - 6;
-            }
-            catch (DivideByZeroException)
-            {
-                return 0;
-            }
+            string result = Math.Round(value, 2).ToString("0.##");
+            return result == "-0" ? "0" : result;
         }
     }
 }
