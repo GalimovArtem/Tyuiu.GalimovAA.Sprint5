@@ -1,5 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
 using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tyuiu.GalimovAA.Sprint5.Task4.V10.Lib;
 
 namespace Tyuiu.GalimovAA.Sprint5.Task4.V10.Test
@@ -8,18 +9,17 @@ namespace Tyuiu.GalimovAA.Sprint5.Task4.V10.Test
     public class DataServiceTest
     {
         [TestMethod]
-        public void CheckLoadFromDataFile()
+        public void ValidLoadFromDataFile()
         {
-            string path = @"C:\DataSprints\InPutDataFileTask4V10.txt";
-
+            string path = @"C:\DataSprint5\InPutDataFileTask4V10.txt";
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
-            Assert.IsTrue(fileExists);
+            Assert.AreEqual(true, fileExists);
 
             DataService ds = new DataService();
-            double wait = 12.632;
-            double res = ds.LoadFromDataFile(path);
-            Assert.AreEqual(wait, res);
+            double wait = 10.368;
+            double result = ds.LoadFromDataFile(path);
+            Assert.AreEqual(wait, result);
         }
     }
 }
